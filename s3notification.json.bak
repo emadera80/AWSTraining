@@ -1,0 +1,22 @@
+{
+    "LambdaFunctionConfigurations": [
+    {
+        "Id": "manny-dev-AWSTraining-s3-event",
+       "LambdaFunctionArn": "arn:aws:lambda:us-east-1:037305576418:function:AWSTraining",
+       "Events": ["s3:ObjectCreated:Put", "s3:ObjectCreated:Copy", "s3:ObjectCreated:Post"],
+       "Filter": {
+          "Key": {
+             "FilterRules": [{
+                "Name": "prefix",
+                "Value": "aws-training/"
+             }, {
+                "Name": "suffix",
+                "Value": ".json"
+             }]
+          }
+       }
+    }]
+}
+
+ 
+ 
