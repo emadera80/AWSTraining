@@ -28,17 +28,17 @@ def write_pd_parquet_s3(df):
 def lambda_handler(event, context):
     # TODO implement
     try: 
-        getObj = s3_client.get_object(Bucket='em-employeedata', Key='EmployeeData.json')
+        getObj = s3_client.get_object(Bucket='em-employeedata', Key='aws_training/EmployeeData.json')
         df = pd.read_json(getObj.get("Body"))
     except Exception as ex: 
         msg = "Failed to read data from S3 check s3 connection"
-        logger.error(ex)
+        logger.error(msg)
 
     try:
         write_pd_parquet_s3(df)
     except Exception as ex: 
         msg = 'Failed to write parquet file to s3 check connection'
-        logger.error(ex)
+        logger.error(msg)
     return
 
 
